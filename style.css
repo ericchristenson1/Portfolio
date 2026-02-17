@@ -16,6 +16,9 @@ body {
 /* Style for the navigation bar */
 .nav {
 	display: flex;
+	color: rgb(63, 123, 63);
+	border-bottom-style: solid;
+
 }
 
 .nav a {
@@ -25,9 +28,8 @@ body {
 	text-align: center;
 	padding: 1em;
 	margin-bottom: auto;
-	border-bottom-width: 0.1em;
-	border-bottom-style: solid;
 	padding-bottom: 1em;
+	margin-inline: auto;
 
 }
 
@@ -35,8 +37,8 @@ body {
 .nav a.currentsite {
 	font-weight: bold;
 	border-bottom-width: 0.5em;
-	border-bottom-color: inherit;
-	padding-bottom: 0.6em;
+	border-bottom-style: solid;
+	padding-bottom: 0.5em;
 }
 
 
