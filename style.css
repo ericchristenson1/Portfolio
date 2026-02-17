@@ -82,10 +82,25 @@ img {
 .projects a {
 	grid-template-rows: subgrid;
 	grid-row: span 3;
-	margin: 2em 0;
+	margin: 2em 0.5em;
 }
 
 
 h2 {
   font-size: 1rem; /* adjust as needed */
+  line-height: 1.1;
+  text-wrap: balance; /* Enable balanced text wrapping */
+}
+
+.resume {
+	display: subgrid;
+	grid-template-columns: auto 1fr;
+	gap: 1em;
+	line-height: 0%;
+}
+
+.resume a {
+	grid-template-rows: subgrid;
+	grid-row: span 3;
+	margin: 2em 0.5em;
 }
