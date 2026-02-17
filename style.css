@@ -62,7 +62,7 @@ label {
     margin-block: 0.5rem;
 }
 */
-.contact {
+.contact { /* I dont know if this is right */
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-column: 1 / -1;
