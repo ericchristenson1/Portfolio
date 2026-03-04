@@ -11,14 +11,19 @@ let pages = [
 ];
 let colorScheme = "light dark";
 let root = globalThis.document?.documentElement;
-$: root?.style.setProperty("color-scheme", colorScheme);
-let localStorage = globalThis.localStorage ?? {};
-if (localStorage.colorScheme) { // if localStorage has a colorScheme property
-  colorScheme = localStorage.colorScheme; // override the default colorScheme
+
+// Load saved preference
+if (globalThis.localStorage?.colorScheme) {
+  colorScheme = globalThis.localStorage.colorScheme;
 }
 
-localStorage.colorScheme = colorScheme;
-
+// Update DOM + save preference
+$: {
+  root?.style.setProperty("color-scheme", colorScheme);
+  if (globalThis.localStorage) {
+    globalThis.localStorage.colorScheme = colorScheme;
+  }
+}
 
 </script>
 
