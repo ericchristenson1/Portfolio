@@ -3,6 +3,8 @@
   import Project from "$lib/Project.svelte";
   import ProjectNarrative from "$lib/ProjectNarrative.svelte";
   import Scrolly from "svelte-scrolly";
+  import { base } from '$app/paths';
+
   let scrollyProgress = 0;
   let years = projects.map(proj => proj.year);
   let range = Math.max(...years) - Math.min(...years);
@@ -36,7 +38,7 @@
       <div class="project-detail">
         <h3>{sorted_projects[activeProjectIdx].year}</h3>
         <img
-          src={sorted_projects[activeProjectIdx].image}
+          src={base}{sorted_projects[activeProjectIdx].image}
           alt="Preview of {sorted_projects[activeProjectIdx].title}"
           style="width: 100%;"
         />
