@@ -61,7 +61,7 @@
 <h3>Recent Projects</h3>
 <div class="projects highlights">
     {#each projects.slice(0, 3) as p}
-    <Project data={p} />
+    <Project data={{ ...p, title: `${p.title} (${p.year})` }} />
     {/each}
 </div>
 
