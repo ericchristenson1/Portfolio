@@ -4,6 +4,9 @@
   import ProjectNarrative from "$lib/ProjectNarrative.svelte";
   import Scrolly from "svelte-scrolly";
   import { base } from '$app/paths';
+  import { onMount } from 'svelte';
+  import * as d3 from 'd3';
+  import Bar from '$lib/Bar.svelte';
 
   let scrollyProgress = 0;
   let years = projects.map(proj => proj.year);
@@ -11,11 +14,31 @@
   let sorted_projects = projects.sort((a, b) => a.year - b.year);
   let progressPerProject = 100 / sorted_projects.length;
   $: activeProjectIdx = Math.min(sorted_projects.length - 1, Math.floor(scrollyProgress / progressPerProject));
+
+  let rawData = [];
+  let wrangled = [];
+
+  onMount(async () => {
+    rawData = await d3.json('/lab6_example.json');
+    wrangled = d3.rollups(
+      rawData,
+      v => d3.sum(v, d => d.lines),
+      d => d.language
+    );
+  });
+
+  $: barData = d3.rollups(projects, v => v.length, d => d.year).map(([year, count]) => ({ label: String(year), value: count }));
 </script>
 
 <svelte:head>
   <title>Projects</title>
 </svelte:head>
+<section>
+    <h2>Data wrangling result</h2>
+    <pre>{JSON.stringify(wrangled, null, 2)}</pre>
+</section>
+
+<Bar data={barData} />
 
 <h1>{projects.length} Projects over {range} Years</h1>
 
@@ -57,6 +80,7 @@
   {#each projects as p}
     <Project data={{
       ...p,
+      title: `${p.title} (${p.year})`,
       image: p.image.startsWith('/') ? `${base}${p.image}` : p.image
     }} />
   {/each}
