@@ -236,7 +236,7 @@
         transition: 200ms;
     }
 
-    circle:hover {
+    circle:not(.selected):hover {
         fill: darkgreen;
     }
 

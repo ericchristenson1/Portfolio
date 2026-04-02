@@ -28,7 +28,9 @@
 
     $: if (xAxis && yAxis) {
         d3.select(xAxis).call(
-            d3.axisBottom(xScale).ticks(4)
+            d3.axisBottom(xScale)
+                .ticks(4)
+                .tickFormat(d => Number.isInteger(d) ? d : "")
         );
         d3.select(yAxis).call(d3.axisLeft(yScale));
     }
