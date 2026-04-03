@@ -236,8 +236,12 @@
         transition: 200ms;
     }
 
-    circle:not(.selected):hover {
+    circle:hover {
         fill: darkgreen;
+    }
+
+    circle.selected:hover {
+        fill: var(--color-accent, #ff6b6b);
     }
 
     dl.info {
