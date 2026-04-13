@@ -1,10 +1,11 @@
 <script>
     export let data = {};
     import * as d3 from 'd3';
+    import { base } from '$app/paths';
 </script>
 <article>
             <h2>{data.title}</h2>
-            <img src={data.image} alt="">
+            <img src={data.image.startsWith('http') ? data.image : `${base}${data.image}`} alt="">
             <p>{data.description}</p>
             {#if data.url}
                 <a href={data.url} target="_blank" rel="noopener noreferrer" class="project-link">View Project →</a>

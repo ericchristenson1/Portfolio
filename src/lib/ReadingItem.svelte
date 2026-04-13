@@ -1,10 +1,11 @@
 <script>
     export let data = {};
+    import { base } from '$app/paths';
 </script>
 <article>
             <h2>{data.title}</h2>
             <h3>{data.author}</h3>
-            <img src={data.image} alt="">
+            <img src={data.image.startsWith('http') ? data.image : `${base}${data.image}`} alt="">
             <p>{data.opinion}</p>
 </article>
 
